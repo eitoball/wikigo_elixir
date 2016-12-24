@@ -27,7 +27,7 @@ defmodule WikigoElixir.WordControllerTest do
   end
 
   test "shows chosen resource", %{conn: conn} do
-    word = Repo.insert! %Word{}
+    word = Repo.insert! %Word{title: "test"}
     conn = get conn, word_path(conn, :show, word)
     assert html_response(conn, 200) =~ "Show word"
   end
@@ -39,26 +39,27 @@ defmodule WikigoElixir.WordControllerTest do
   end
 
   test "renders form for editing chosen resource", %{conn: conn} do
-    word = Repo.insert! %Word{}
+    word = Repo.insert! %Word{title: "test"}
     conn = get conn, word_path(conn, :edit, word)
     assert html_response(conn, 200) =~ "Edit word"
   end
 
   test "updates chosen resource and redirects when data is valid", %{conn: conn} do
-    word = Repo.insert! %Word{}
+    word = Repo.insert! %Word{title: "test"}
     conn = put conn, word_path(conn, :update, word), word: @valid_attrs
+    word = Repo.get_by(Word, @valid_attrs)
+    assert word
     assert redirected_to(conn) == word_path(conn, :show, word)
-    assert Repo.get_by(Word, @valid_attrs)
   end
 
   test "does not update chosen resource and renders errors when data is invalid", %{conn: conn} do
-    word = Repo.insert! %Word{}
+    word = Repo.insert! %Word{title: "test"}
     conn = put conn, word_path(conn, :update, word), word: @invalid_attrs
     assert html_response(conn, 200) =~ "Edit word"
   end
 
   test "deletes chosen resource", %{conn: conn} do
-    word = Repo.insert! %Word{}
+    word = Repo.insert! %Word{title: "test"}
     conn = delete conn, word_path(conn, :delete, word)
     assert redirected_to(conn) == word_path(conn, :index)
     refute Repo.get(Word, word.id)

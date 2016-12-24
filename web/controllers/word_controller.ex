@@ -26,19 +26,19 @@ defmodule WikigoElixir.WordController do
     end
   end
 
-  def show(conn, %{"id" => id}) do
-    word = Repo.get!(Word, id)
+  def show(conn, %{"title" => title}) do
+    word = Repo.get_by!(Word, title: title)
     render(conn, "show.html", word: word)
   end
 
-  def edit(conn, %{"id" => id}) do
-    word = Repo.get!(Word, id)
+  def edit(conn, %{"title" => title}) do
+    word = Repo.get_by!(Word, title: title)
     changeset = Word.changeset(word)
     render(conn, "edit.html", word: word, changeset: changeset)
   end
 
-  def update(conn, %{"id" => id, "word" => word_params}) do
-    word = Repo.get!(Word, id)
+  def update(conn, %{"title" => title, "word" => word_params}) do
+    word = Repo.get_by!(Word, title: title)
     changeset = Word.changeset(word, word_params)
 
     case Repo.update(changeset) do
@@ -51,8 +51,8 @@ defmodule WikigoElixir.WordController do
     end
   end
 
-  def delete(conn, %{"id" => id}) do
-    word = Repo.get!(Word, id)
+  def delete(conn, %{"title" => title}) do
+    word = Repo.get_by!(Word, title: title)
 
     # Here we use delete! (with a bang) because we expect
     # it to always work (and if it does not, it will raise).
