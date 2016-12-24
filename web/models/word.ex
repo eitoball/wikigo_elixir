@@ -16,4 +16,8 @@ defmodule WikigoElixir.Word do
     |> cast(params, [:title, :body])
     |> validate_required([:title, :body])
   end
+
+  def titles do
+    WikigoElixir.Repo.all(from w in WikigoElixir.Word, select: w.title)
+  end
 end
