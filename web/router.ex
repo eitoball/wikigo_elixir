@@ -16,8 +16,9 @@ defmodule WikigoElixir.Router do
   scope "/", WikigoElixir do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
-    resources "/words", WordController, param: "title"
+    # get "/", PageController, :index
+    get "/", WordController, :index
+    resources "/wiki", WordController, param: "title"
   end
 
   # Other scopes may use custom stacks.
