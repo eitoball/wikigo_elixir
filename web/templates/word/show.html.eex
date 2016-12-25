@@ -18,7 +18,7 @@
           Regex.replace(~r/#{title}/, acc, link)
         end)
     %>
-    <%= raw body %>
+    <%= body |> Earmark.to_html |> raw %>
   </li>
 
 </ul>
