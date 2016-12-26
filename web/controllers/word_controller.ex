@@ -1,6 +1,8 @@
 defmodule WikigoElixir.WordController do
   use WikigoElixir.Web, :controller
 
+  plug Coherence.Authentication.Session, [protected: true] when action in [:create, :update, :new, :edit, :delete]
+
   alias WikigoElixir.Word
 
   def index(conn, _params) do
