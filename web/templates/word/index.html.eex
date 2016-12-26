@@ -4,7 +4,6 @@
   <thead>
     <tr>
       <th>Title</th>
-      <th>Body</th>
 
       <th></th>
     </tr>
@@ -12,11 +11,11 @@
   <tbody>
 <%= for word <- @words do %>
     <tr>
-      <td><%= word.title %></td>
-      <td><%= word.body %></td>
+      <td>
+        <%= link word.title, to: word_path(@conn, :show, word), class: "btn btn-default btn-xs" %>
+      </td>
 
       <td class="text-right">
-        <%= link "Show", to: word_path(@conn, :show, word), class: "btn btn-default btn-xs" %>
         <%= link "Edit", to: word_path(@conn, :edit, word), class: "btn btn-default btn-xs" %>
         <%= link "Delete", to: word_path(@conn, :delete, word), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
       </td>
