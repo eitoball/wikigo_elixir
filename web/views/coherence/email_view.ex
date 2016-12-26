@@ -1,3 +1,4 @@
-defmodule WikigoElixir.LayoutView do
+defmodule Coherence.EmailView do
   use WikigoElixir.Coherence.Web, :view
+
 end
