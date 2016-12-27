@@ -1,0 +1,5 @@
+= @word.title
+
+= add_word_link(@conn, @word.body) |> Earmark.to_html |> raw
+
+= link "Edit", to: word_path(@conn, :edit, @word)
