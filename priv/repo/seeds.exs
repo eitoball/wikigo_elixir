@@ -9,3 +9,5 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+WikigoElixir.Repo.get_by(WikigoElixir.Word, title: "_menu") ||
+  WikigoElixir.Repo.insert!(%WikigoElixir.Word{title: "_menu"})

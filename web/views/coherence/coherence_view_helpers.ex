@@ -176,4 +176,10 @@ defmodule WikigoElixir.Coherence.ViewHelpers do
       current_user.name
     end
   end
+
+  def menu do
+    menu_word = WikigoElixir.Repo.get_by!(WikigoElixir.Word, title: "_menu")
+    body = menu_word.body || ""
+    body |> Earmark.to_html |> raw
+  end
 end
