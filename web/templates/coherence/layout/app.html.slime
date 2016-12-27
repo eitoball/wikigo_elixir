@@ -30,4 +30,10 @@ html lang="en"
             #grid-container.section.scrollspy
               = render(@view_module, @view_template, assigns)
 
+    footer.page-footer
+      .container
+        .row
+          ul
+            li = link "Sign in", to: session_path(@conn, :new)
+            li = link "Sign out", to: session_path(@conn, :delete, method: :delete)
     script src="#{static_path(@conn, "/js/app.js")}"
