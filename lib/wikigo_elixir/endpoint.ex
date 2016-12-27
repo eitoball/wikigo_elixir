@@ -38,5 +38,6 @@ defmodule WikigoElixir.Endpoint do
     key: "_wikigo_elixir_key",
     signing_salt: "IY+LBPMd"
 
+  plug WikigoElixir.Redirector
   plug WikigoElixir.Router
 end

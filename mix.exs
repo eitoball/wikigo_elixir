@@ -41,7 +41,8 @@ defmodule WikigoElixir.Mixfile do
      {:cowboy, "~> 1.0"},
      {:coherence, "~> 0.3"},
      {:earmark, "~> 1.0.3"},
-     {:phoenix_slime, "~> 0.8.0"}]
+     {:phoenix_slime, "~> 0.8.0"},
+     {:plug_redirect, "~> 0.0"}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
