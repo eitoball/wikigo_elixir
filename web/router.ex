@@ -27,6 +27,7 @@ defmodule WikigoElixir.Router do
   scope "/-" do
     pipe_through :browser
     coherence_routes
+    get "/index", WordController, :index, as: "words_index"
   end
 
   scope "/-" do

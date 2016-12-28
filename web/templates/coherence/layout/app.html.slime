@@ -38,6 +38,7 @@ html lang="en"
       .container
         .row
           ul
+            li = link "All words", to: word_path(@conn, :index)
             li = link "Sign in", to: session_path(@conn, :new)
             li = link "Sign out", to: session_path(@conn, :delete, method: :delete)
     script src="#{static_path(@conn, "/js/app.js")}"
