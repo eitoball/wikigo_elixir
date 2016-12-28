@@ -3,6 +3,11 @@ $primary-color: color("cyan", "accent-4") !default;
 $secondary-color: color("cyan", "") !default;
 
 @import "materialize";
+@import url(https://fonts.googleapis.com/earlyaccess/notosansjapanese.css);
+
+html {
+  font-family: 'Noto Sans JP', GillSans, Calibri, Trebuchet, sans-serif;
+}
 
 .nav-wrapper {
   margin-left: 20px;
