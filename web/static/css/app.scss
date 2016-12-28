@@ -3,3 +3,26 @@ $primary-color: color("cyan", "accent-4") !default;
 $secondary-color: color("cyan", "") !default;
 
 @import "materialize";
+
+.nav-wrapper {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+main {
+  min-height: 500px;
+  .markdown {
+  }
+}
+
+tabs {
+  margin-bottom: 30px;
+}
+
+#raw-editor-body {
+  height: 20em;
+}
+
+div#preview {
+  margin-top: 105px;
+}

@@ -43,7 +43,7 @@ class WordEditView extends MainView {
       setInterval(() => {
         $("#preview").html(marked($("#raw-editor-body").val()));
       }, 1500);
-      $("ul.tabs").tabs();
+      $(".container").css("width", "90%");
     });
   }
 

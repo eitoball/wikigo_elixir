@@ -12,17 +12,11 @@ html lang="en"
   body data-js-view-name="#{js_view_name(@conn, @view_template)}"
     header
       .navbar-fixed
-        nav role="navigation"
+        nav.white.grey-text role="navigation"
           .nav-wrapper.container
-            a#brand-logo Logo
+            = link "Wiki Go", to: "/", class: "brand-logo grey-text text-darken-3"
             ul.right.hide-on-med-and-down
-              li = link("New Keyword", to: word_path(@conn, :new))
-              li
-                a Link1
-              li
-                a Link2
-              li
-                a Link3
+              li = link "New Keyword", to: word_path(@conn, :new), class: "btn"
 
       p.alert.alert-info role="alert" = get_flash(@conn, :info)
       p.alert.alert-danger role="alert" = get_flash(@conn, :error)
@@ -37,8 +31,9 @@ html lang="en"
     footer.page-footer
       .container
         .row
+          h5.white-text Menu
           ul
-            li = link "All words", to: word_path(@conn, :index)
-            li = link "Sign in", to: session_path(@conn, :new)
-            li = link "Sign out", to: session_path(@conn, :delete, method: :delete)
+            li = link "Sign in", to: session_path(@conn, :new), class: "grey-text text-lighten-3"
+            li = link "Sign out", to: session_path(@conn, :delete, method: :delete), class: "grey-text text-lighten-3"
+            li = link "All words", to: word_path(@conn, :index), class: "grey-text text-lighten-3"
     script src="#{static_path(@conn, "/js/app.js")}"

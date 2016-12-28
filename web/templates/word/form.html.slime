@@ -1,13 +1,6 @@
 .row
 
-  .col.s12
-    ul.tabs
-      li.tab.col.s3
-        a.active href="#edit" 編集
-      li.tab.col.s3
-        a.active href="#preview" プレビュー
-
-  .col.s12#edit
+  .col.s6#edit
     = form_for @changeset, @action, fn f ->
       = if @changeset.action do
         .alert.alert-danger
@@ -26,4 +19,4 @@
       .form-group
         = submit "Submit", class: "btn btn-primary"
 
-  .col.s12#preview
+  .markdown.col.s6#preview
