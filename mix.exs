@@ -40,6 +40,7 @@ defmodule WikigoElixir.Mixfile do
      {:gettext, "~> 0.11"},
      {:cowboy, "~> 1.0"},
      {:coherence, "~> 0.3"},
+     {:credo, "~> 0.5", only: [:dev, :test]},
      {:earmark, "~> 1.0.3"},
      {:phoenix_slime, "~> 0.8.0"},
      {:plug_redirect, "~> 0.0"}]
