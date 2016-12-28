@@ -33,7 +33,10 @@ html lang="en"
         .row
           h5.white-text Menu
           ul
-            li = link "Sign in", to: session_path(@conn, :new), class: "grey-text text-lighten-3"
-            li = link "Sign out", to: session_path(@conn, :delete, method: :delete), class: "grey-text text-lighten-3"
             li = link "All words", to: word_path(@conn, :index), class: "grey-text text-lighten-3"
+            = if Coherence.logged_in?(@conn) do
+              li = link "Sign out", to: session_path(@conn, :delete, method: :delete), class: "grey-text text-lighten-3"
+            - else
+              li = link "Sign in", to: session_path(@conn, :new), class: "grey-text text-lighten-3"
+
     script src="#{static_path(@conn, "/js/app.js")}"
