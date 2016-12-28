@@ -9,7 +9,7 @@ html lang="en"
 
     title Hello Admin1!
     link rel="stylesheet" href="#{static_path(@conn, "/css/app.css")}"
-  body
+  body data-js-view-name="#{js_view_name(@conn, @view_template)}"
     header
       .navbar-fixed
         nav role="navigation"

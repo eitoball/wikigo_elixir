@@ -19,3 +19,62 @@ import "phoenix_html"
 // paths "./socket" or full ones "web/static/js/socket".
 
 // import socket from "./socket"
+import $ from "jquery"
+import marked from "marked"
+import "materialize-css"
+
+class MainView {
+  mount() {
+    console.log("MainView mounted");
+  }
+
+  unmount() {
+    console.log("MainView unmounted");
+  }
+}
+
+class WordEditView extends MainView {
+  mount() {
+    super.mount();
+
+    console.log("WordShowView mounted");
+
+    $(document).ready(() => {
+      setInterval(() => {
+        $("#preview").html(marked($("#raw-editor-body").val()));
+      }, 1500);
+      $("ul.tabs").tabs();
+    });
+  }
+
+  unmount() {
+    super.unmount();
+
+    console.log("WordShowView unmounted");
+  }
+}
+
+const views = {
+  WordEditView
+};
+
+function loadView(viewName) {
+  return views[viewName] || MainView
+}
+
+function handleDOMContentLoaded() {
+  const viewName = document.getElementsByTagName("body")[0].dataset.jsViewName;
+
+  const ViewClass = loadView(viewName);
+  const view = new ViewClass();
+  view.mount();
+
+  window.currentView = view;
+}
+
+function handleDocumentUnload() {
+  window.currentView.unmount();
+}
+
+window.addEventListener("DOMContentLoaded", handleDOMContentLoaded, false);
+window.addEventListener("unload", handleDocumentUnload, false);

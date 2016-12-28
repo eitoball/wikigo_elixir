@@ -182,4 +182,24 @@ defmodule WikigoElixir.Coherence.ViewHelpers do
     body = menu_word.body || ""
     body |> Earmark.to_html |> raw
   end
+
+  @doc """
+  https://blog.diacode.com/page-specific-javascript-in-phoenix-framework-pt-1
+  """
+  def js_view_name(conn, view_template) do
+    [view_name(conn), template_name(view_template), "View"]
+    |> Enum.map(&String.capitalize/1)
+    |> Enum.join("")
+  end
+
+  defp view_name(conn) do
+    conn
+    |> Phoenix.Controller.view_module
+    |> Phoenix.Naming.resource_name
+    |> String.replace("_view", "")
+  end
+
+  defp template_name(template) when is_binary(template) do
+    template |> Path.rootname
+  end
 end
