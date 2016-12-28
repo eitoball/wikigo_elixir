@@ -16,7 +16,7 @@ html lang="en"
           .nav-wrapper.container
             = link "Wiki Go", to: "/", class: "brand-logo grey-text text-darken-3"
             ul.right.hide-on-med-and-down
-              li = link "New Keyword", to: word_path(@conn, :new), class: "btn"
+              li = link "New Keyword", to: word_path(@conn, :new), class: "btn waves-effect waves-light"
 
       p.alert.alert-info role="alert" = get_flash(@conn, :info)
       p.alert.alert-danger role="alert" = get_flash(@conn, :error)
@@ -33,6 +33,7 @@ html lang="en"
         .row
           h5.white-text Menu
           ul
+            li = link "New keyword", to: word_path(@conn, :new), class: "grey-text text-lighten-3"
             li = link "All words", to: word_path(@conn, :index), class: "grey-text text-lighten-3"
             = if Coherence.logged_in?(@conn) do
               li = link "Sign out", to: session_path(@conn, :delete, method: :delete), class: "grey-text text-lighten-3"
