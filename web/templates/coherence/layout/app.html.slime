@@ -11,14 +11,18 @@ html lang="en"
     link rel="stylesheet" href="#{static_path(@conn, "/css/app.css")}"
   body
     header
-      nav.top-nav
-        .container
-          .nav-wrapper
-            a.page-title Hello
-      ul#nav-mobile.side-nav.fixed
-        li.logo Logo
-        li = link("Edit Menu", to: word_path(@conn, :edit, "_menu"))
-        li = link("New Keyword", to: word_path(@conn, :new))
+      .navbar-fixed
+        nav role="navigation"
+          .nav-wrapper.container
+            a#brand-logo Logo
+            ul.right.hide-on-med-and-down
+              li = link("New Keyword", to: word_path(@conn, :new))
+              li
+                a Link1
+              li
+                a Link2
+              li
+                a Link3
 
       p.alert.alert-info role="alert" = get_flash(@conn, :info)
       p.alert.alert-danger role="alert" = get_flash(@conn, :error)
@@ -26,7 +30,7 @@ html lang="en"
     main
       .container
         .row
-          .col.s12.m9.l10
+          .col.s12
             #grid-container.section.scrollspy
               = render(@view_module, @view_template, assigns)
 

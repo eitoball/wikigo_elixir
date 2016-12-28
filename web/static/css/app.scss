@@ -1,2 +1,5 @@
+@import "components/color";
+$primary-color: color("cyan", "accent-4") !default;
+$secondary-color: color("cyan", "") !default;
+
 @import "materialize";
-@import "style";
