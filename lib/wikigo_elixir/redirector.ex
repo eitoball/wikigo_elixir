@@ -1,5 +1,5 @@
 defmodule WikigoElixir.Redirector do
   use Plug.Redirect
 
-  redirect "/", "/_main"
+  redirect "/", "/Main%20Page"
 end

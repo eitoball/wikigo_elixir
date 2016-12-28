@@ -9,13 +9,13 @@ end
 |> User.changeset(%{
   email: "wiki@example.com",
   name: "wiki",
-  password: "letseditwiki",
-  password_confirmation: "letseditwiki"
+  password: "password",
+  password_confirmation: "password"
 })
 |> Repo.insert_or_update!
 
-case Repo.get_by(Word, title: "_main") do
-  nil -> %Word{title: "_main", body: "ここを編集して開始して下さい。"}
+case Repo.get_by(Word, title: "Main Page") do
+  nil -> %Word{title: "Main Page", body: "Wiki wiki go!"}
   word -> word
 end
 |> Word.changeset
