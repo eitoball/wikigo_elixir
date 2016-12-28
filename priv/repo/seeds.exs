@@ -14,14 +14,9 @@ end
 })
 |> Repo.insert_or_update!
 
-case Repo.get(Word, 1) do
-  nil -> %Word{id: 1}
+case Repo.get_by(Word, title: "_main") do
+  nil -> %Word{title: "_main", body: "ここを編集して開始して下さい。"}
   word -> word
 end
-|> Word.changeset(%{
-  title: "_main", body: "ここを編集して開始して下さい。"
-})
+|> Word.changeset
 |> Repo.insert_or_update!
-
-Repo.get_by(Word, title: "_menu") ||
-  Repo.insert!(%Word{title: "_menu"})

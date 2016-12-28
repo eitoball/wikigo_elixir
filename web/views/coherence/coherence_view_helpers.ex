@@ -177,12 +177,6 @@ defmodule WikigoElixir.Coherence.ViewHelpers do
     end
   end
 
-  def menu do
-    menu_word = WikigoElixir.Repo.get_by!(WikigoElixir.Word, title: "_menu")
-    body = menu_word.body || ""
-    body |> Earmark.to_html |> raw
-  end
-
   @doc """
   https://blog.diacode.com/page-specific-javascript-in-phoenix-framework-pt-1
   """
