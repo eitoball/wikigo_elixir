@@ -1,4 +1,4 @@
-h2 New word<
+h2 New word
 
 = render "form.html", changeset: @changeset,
-                      action: word_path(@conn, :create) %>
+                      action: word_path(@conn, :create)

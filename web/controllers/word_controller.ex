@@ -19,10 +19,10 @@ defmodule WikigoElixir.WordController do
     changeset = Word.changeset(%Word{}, word_params)
 
     case Repo.insert(changeset) do
-      {:ok, _word} ->
+      {:ok, word} ->
         conn
         |> put_flash(:info, "Word created successfully.")
-        |> redirect(to: word_path(conn, :index))
+        |> redirect(to: word_path(conn, :show, word))
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
@@ -41,7 +41,7 @@ defmodule WikigoElixir.WordController do
 
   def update(conn, %{"title" => title, "word" => word_params}) do
     word = Repo.get_by!(Word, title: title)
-    changeset = Word.changeset(word, word_params)
+    changeset = Word.changeset(word, word_params, whodoneit(conn))
 
     case Repo.update(changeset) do
       {:ok, word} ->
@@ -54,14 +54,20 @@ defmodule WikigoElixir.WordController do
   end
 
   def delete(conn, %{"title" => title}) do
-    word = Repo.get_by!(Word, title: title)
+    changeset = Repo.get_by!(Word, title: title)
+      |> Word.changeset(%{}, whodoneit(conn))
 
     # Here we use delete! (with a bang) because we expect
     # it to always work (and if it does not, it will raise).
-    Repo.delete!(word)
+    Repo.delete!(changeset)
 
     conn
     |> put_flash(:info, "Word deleted successfully.")
     |> redirect(to: word_path(conn, :index))
+  end
+
+  defp whodoneit(conn) do
+    user = Coherence.current_user(conn)
+    [whodoneit: user, whodoneit_name: user.name]
   end
 end

@@ -43,7 +43,7 @@ defmodule WikigoElixir.Mixfile do
      {:credo, "~> 0.5", only: [:dev, :test]},
      {:earmark, "~> 1.0.3"},
      {:phoenix_slime, "~> 0.8.0"},
-     {:plug_redirect, "~> 0.0"}]
+     {:whatwasit, "~> 0.2"}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
