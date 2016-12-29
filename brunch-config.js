@@ -61,7 +61,6 @@ exports.config = {
       }
     },
     copycat: {
-      "fonts": ["node_modules/materialize-css/fonts"]
     }
   },
 
@@ -74,6 +73,12 @@ exports.config = {
   },
 
   npm: {
-    enabled: true
+    enabled: true,
+    styles: {
+      simplemde: [
+        "../codemirror/lib/codemirror.css",
+        "src/css/simplemde.css"
+      ]
+    }
   }
 };

@@ -22,6 +22,7 @@ import "phoenix_html"
 import $ from "jquery"
 import marked from "marked"
 import "materialize-css"
+import SimpleMDE from "simplemde"
 
 class MainView {
   mount() {
@@ -44,6 +45,7 @@ class WordEditView extends MainView {
         $("#preview").html(marked($("#raw-editor-body").val()));
       }, 1500);
       $(".container").css("width", "90%");
+      var simplemde = new SimpleMDE({toolbal: true});
     });
   }
 

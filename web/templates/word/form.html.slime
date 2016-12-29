@@ -1,22 +1,23 @@
-.row
+= form_for @changeset, @action, fn f ->
+  = if @changeset.action do
+    .alert.alert-danger
+      p Oops, something went wrong! Please check the errors below.
 
-  .col.s12.m6#edit
-    = form_for @changeset, @action, fn f ->
-      = if @changeset.action do
-        .alert.alert-danger
-          p Oops, something went wrong! Please check the errors below.
-
-      .form-group
+  .row
+    .col.s12.m6
+      .field
         = label f, :title, class: "control-label"
         = text_input f, :title, class: "form-control"
         = error_tag f, :title
 
-      .form-group
+  .row
+    #edit.col.s12.m6
+      .field
         = label f, :body, class: "control-label"
         = textarea f, :body, id: "raw-editor-body", class: "materialize-textarea"
         = error_tag f, :body
 
-      .form-group
-        = submit "Submit", class: "btn btn-primary"
+      .actions
+        = submit "Submit", class: "btn"
 
-  .markdown.col.s12.m6#preview
+    #preview.markdown.col.s12.m6
