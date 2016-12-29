@@ -4,20 +4,18 @@
       p Oops, something went wrong! Please check the errors below.
 
   .row
-    .col.s12.m6
+    .col.s12.m12
       .field
         = label f, :title, class: "control-label"
         = text_input f, :title, class: "form-control"
         = error_tag f, :title
 
   .row
-    #edit.col.s12.m6
+    #edit.col.s12.m12
       .field
         = label f, :body, class: "control-label"
-        = textarea f, :body, id: "raw-editor-body", class: "materialize-textarea"
+        = textarea f, :body
         = error_tag f, :body
 
       .actions
         = submit "Submit", class: "btn"
-
-    #preview.markdown.col.s12.m6

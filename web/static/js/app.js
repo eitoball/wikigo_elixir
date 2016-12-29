@@ -41,11 +41,7 @@ class WordEditView extends MainView {
     console.log("WordShowView mounted");
 
     $(document).ready(() => {
-      setInterval(() => {
-        $("#preview").html(marked($("#raw-editor-body").val()));
-      }, 1500);
-      $(".container").css("width", "90%");
-      var simplemde = new SimpleMDE({toolbal: true});
+      var simplemde = new SimpleMDE({spellChecker: false});
     });
   }
 

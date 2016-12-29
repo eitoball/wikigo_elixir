@@ -8,7 +8,6 @@
   "dependencies": {
     "phoenix": "file:deps/phoenix",
     "phoenix_html": "file:deps/phoenix_html",
-    "marked": "~0.3.6",
     "materialize-css": "~0.97.8",
     "simplemde": "~1.11.2"
   },

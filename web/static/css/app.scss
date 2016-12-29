@@ -14,20 +14,14 @@ html {
   margin-right: 20px;
 }
 
+.navbar-fixed {
+  z-index: 5;
+}
+
 main {
   min-height: 500px;
-  .markdown {
-  }
 }
 
 tabs {
   margin-bottom: 30px;
-}
-
-#raw-editor-body {
-  height: 30em;
-}
-
-div#preview {
-  margin-top: 55px;
 }
