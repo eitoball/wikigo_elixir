@@ -9,7 +9,7 @@
     </tr>
   </thead>
   <tbody>
-<%= for word <- @words do %>
+<%= for word <- @words.entries do %>
     <tr>
       <td>
         <%= link word.title, to: word_path(@conn, :show, word), class: "btn btn-default btn-xs" %>
@@ -25,3 +25,7 @@
 </table>
 
 <%= link "New word", to: word_path(@conn, :new) %>
+
+<section class="right-align">
+  <%= pagination_links @words %>
+</section>

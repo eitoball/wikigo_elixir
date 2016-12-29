@@ -1,5 +1,6 @@
 defmodule WikigoElixir.WordView do
   use WikigoElixir.Web, :view
+  import Scrivener.HTML
 
   def add_word_link(conn, body) do
     WikigoElixir.Word.titles

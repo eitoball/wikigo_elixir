@@ -20,7 +20,7 @@ defmodule WikigoElixir.Mixfile do
     [mod: {WikigoElixir, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
                     :phoenix_ecto, :postgrex,
-                    :coherence]]
+                    :coherence, :scrivener_ecto, :scrivener_html]]
   end
 
   # Specifies which paths to compile per environment.
@@ -43,6 +43,8 @@ defmodule WikigoElixir.Mixfile do
      {:credo, "~> 0.5", only: [:dev, :test]},
      {:earmark, "~> 1.0.3"},
      {:phoenix_slime, "~> 0.8.0"},
+     {:scrivener_ecto, "~> 1.0"},
+     {:scrivener_html, "~> 1.1"},
      {:whatwasit, "~> 0.2"}]
   end
 

@@ -5,8 +5,8 @@ defmodule WikigoElixir.WordController do
 
   alias WikigoElixir.Word
 
-  def index(conn, _params) do
-    words = Repo.all(Word)
+  def index(conn, params) do
+    words = Word |> Repo.paginate(params)
     render(conn, "index.html", words: words)
   end
 
@@ -63,7 +63,7 @@ defmodule WikigoElixir.WordController do
 
     conn
     |> put_flash(:info, "Word deleted successfully.")
-    |> redirect(to: word_path(conn, :index))
+    |> redirect(to: words_index_path(conn, :index))
   end
 
   def version(conn, %{"title" => title, "version" => version}) do

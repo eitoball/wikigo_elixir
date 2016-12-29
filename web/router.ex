@@ -27,7 +27,7 @@ defmodule WikigoElixir.Router do
   scope "/-" do
     pipe_through :browser
     coherence_routes
-    get "/index", WordController, :index, as: "words_index"
+    get "/index", WikigoElixir.WordController, :index, as: "words_index"
   end
 
   scope "/-" do
@@ -38,7 +38,7 @@ defmodule WikigoElixir.Router do
   scope "/", WikigoElixir do
     pipe_through :browser # Use the default browser stack
 
-    resources "/", WordController, param: "title"
+    resources "/", WordController, param: "title", except: [:index]
     get "/:title/version/:version", WordController, :version
   end
 

@@ -47,3 +47,6 @@ config :coherence, WikigoElixir.Coherence.Mailer,
 config :phoenix, :template_engines,
   slim: PhoenixSlime.Engine,
   slime: PhoenixSlime.Engine
+
+config :scrivener_html,
+  routes_helper: WikigoElixir.Router.Helpers
