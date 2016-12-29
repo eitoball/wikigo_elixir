@@ -4,3 +4,9 @@
 
 = if Coherence.logged_in?(@conn) do
   = link "Edit", to: word_path(@conn, :edit, @word)
+
+= if has_version?(@word) do
+  ul.right.pagination.versions-nav
+    li = link "Latest", to: word_path(@conn, :show, @word)
+    = versions(@word) |> Enum.with_index(1) |> Enum.map fn {v, i} ->
+      li = link Integer.to_string(i), to: word_path(@conn, :version, v, i - 1)

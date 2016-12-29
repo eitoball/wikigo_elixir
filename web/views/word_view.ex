@@ -9,4 +9,12 @@ defmodule WikigoElixir.WordView do
       Regex.replace(~r/#{title}/, acc, link)
     end)
   end
+
+  def versions(word) do
+    WikigoElixir.Whatwasit.Version.versions(word)
+  end
+
+  def has_version?(word) do
+    versions(word) |> Enum.empty? |> Kernel.not
+  end
 end

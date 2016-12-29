@@ -39,6 +39,7 @@ defmodule WikigoElixir.Router do
     pipe_through :browser # Use the default browser stack
 
     resources "/", WordController, param: "title"
+    get "/:title/version/:version", WordController, :version
   end
 
   # Other scopes may use custom stacks.

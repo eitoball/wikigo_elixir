@@ -1,7 +1,7 @@
 defmodule WikigoElixir.WordController do
   use WikigoElixir.Web, :controller
 
-  plug Coherence.Authentication.Session, [protected: true] when action in [:create, :update, :new, :edit, :delete]
+  plug Coherence.Authentication.Session, [protected: true] when action in [:create, :update, :new, :edit, :delete, :version]
 
   alias WikigoElixir.Word
 
@@ -64,6 +64,20 @@ defmodule WikigoElixir.WordController do
     conn
     |> put_flash(:info, "Word deleted successfully.")
     |> redirect(to: word_path(conn, :index))
+  end
+
+  def version(conn, %{"title" => title, "version" => version}) do
+    case Repo.get_by!(Word, title: title) do
+      nil ->
+        conn |> put_status(404) |> render(WikigoElixir.ErrorView, :"404")
+      word ->
+        case WikigoElixir.Whatwasit.Version.versions(word) |> Enum.at(String.to_integer(version)) do
+          nil ->
+            conn |> put_status(404) |> render(WikigoElixir.ErrorView, :"404")
+          version ->
+            render(conn, "show.html", word: version)
+        end
+    end
   end
 
   defp whodoneit(conn) do
