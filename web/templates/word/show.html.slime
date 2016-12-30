@@ -1,9 +1,9 @@
+= if Coherence.logged_in?(@conn) do
+  = link "Edit", to: word_path(@conn, :edit, @word)
+
 .markdown
   h1 = @word.title
   = add_word_link(@conn, @word.body) |> Earmark.to_html(%Earmark.Options{breaks: true}) |> raw
-
-= if Coherence.logged_in?(@conn) do
-  = link "Edit", to: word_path(@conn, :edit, @word)
 
 = if has_version?(@word) do
   ul.right.pagination.versions-nav
