@@ -36,7 +36,7 @@ html lang="en"
             li = link "New keyword", to: word_path(@conn, :new), class: "grey-text text-lighten-3"
             li = link "All words", to: words_index_path(@conn, :index), class: "grey-text text-lighten-3"
             = if Coherence.logged_in?(@conn) do
-              li = link "Sign out", to: session_path(@conn, :delete, method: :delete), class: "grey-text text-lighten-3"
+              li = signout_link(@conn, "Sign out", "grey-text text-lighten-3")
             - else
               li = link "Sign in", to: session_path(@conn, :new), class: "grey-text text-lighten-3"
 
