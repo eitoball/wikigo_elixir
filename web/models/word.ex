@@ -27,6 +27,6 @@ end
 
 defimpl Phoenix.Param, for: WikigoElixir.Word do
   def to_param(%{title: title}) do
-    title
+    title |> String.replace(" ", "-")
   end
 end

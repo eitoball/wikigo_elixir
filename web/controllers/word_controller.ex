@@ -2,6 +2,7 @@ defmodule WikigoElixir.WordController do
   use WikigoElixir.Web, :controller
 
   plug Coherence.Authentication.Session, [protected: true] when action in [:create, :update, :new, :edit, :delete, :version]
+  plug :convert_title_param
 
   alias WikigoElixir.Word
 
@@ -84,4 +85,10 @@ defmodule WikigoElixir.WordController do
     user = Coherence.current_user(conn)
     [whodoneit: user, whodoneit_name: user.name]
   end
+
+  def convert_title_param(%Plug.Conn{params: %{"title" => title}} = conn, _opts) do
+    params = %{conn.params | "title" => title |> String.replace("-", " ")}
+    %{conn | params: params}
+  end
+  def convert_title_param(conn, _opts), do: conn
 end
