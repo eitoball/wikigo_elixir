@@ -5,6 +5,11 @@ $secondary-color: color("cyan", "") !default;
 @import "materialize";
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
+nav {
+  border-bottom: 1px solid #eee;
+  margin-bottom: 30px;
+}
+
 .nav-wrapper {
   margin-left: 20px;
   margin-right: 20px;
