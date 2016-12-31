@@ -4,10 +4,11 @@
 .markdown
   h1 = @word.title
   .row
-    .col.s12.m9
+    .col-md-9.col-xs12
       = add_word_link(@conn, @word.body) |> Earmark.to_html(%Earmark.Options{breaks: true, renderer: WikigoElixir.Earmark.HtmlRenderer}) |> raw
-    .col.s12.m3.hide-on-med-and-down
-      = @word.body |> Earmark.to_html(%Earmark.Options{renderer: WikigoElixir.Earmark.HtmlTocRenderer}) |> raw
+    .col-md-3.col-xs12
+      .hidden-xs.hidden-sm
+        = @word.body |> Earmark.to_html(%Earmark.Options{renderer: WikigoElixir.Earmark.HtmlTocRenderer}) |> raw
 
 = if has_version?(@word) do
   ul.right.pagination.versions-nav
