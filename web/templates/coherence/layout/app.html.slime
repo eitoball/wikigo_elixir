@@ -11,27 +11,21 @@ html lang="en"
     link rel="stylesheet" href="#{static_path(@conn, "/css/app.css")}"
   body data-js-view-name="#{js_view_name(@conn, @view_template)}"
     header
-      ul#setting-menu.dropdown-content
-
-      .navbar
-        nav.z-depth-0
-          .nav-wrapper.container
-            = link "Wiki Go", to: "/", class: "brand-logo"
-            ul.right.hide-on-med-and-down
-              = if Coherence.logged_in?(@conn) do
-                li = link "New Keyword", to: word_path(@conn, :new)
-              - else
-                li = link "Sign in", to: session_path(@conn, :new)
+      nav.navbar.navbar-default
+        .container
+          = link "Wiki Go", to: "/", class: "navbar-brand"
+          .navbar-text.navbar-right
+            = if Coherence.logged_in?(@conn) do
+              = link "New Keyword", to: word_path(@conn, :new), class: "navbar-link"
+            - else
+              = link "Sign in", to: session_path(@conn, :new), class: "navbar-link"
 
       p.alert.alert-info role="alert" = get_flash(@conn, :info)
       p.alert.alert-danger role="alert" = get_flash(@conn, :error)
 
     main
       .container
-        .row
-          .col.s12
-            #grid-container.section
-              = render(@view_module, @view_template, assigns)
+        = render(@view_module, @view_template, assigns)
 
     footer.page-footer
       .container

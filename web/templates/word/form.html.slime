@@ -5,17 +5,17 @@
 
   .row
     .col.s12.m12
-      .field
+      .form-group.field
         = label f, :title, class: "control-label"
         = text_input f, :title, class: "form-control"
         = error_tag f, :title
 
   .row
     #edit.col.s12.m12
-      .field
+      .form-group.field
         = label f, :body, class: "control-label"
-        = textarea f, :body
+        = textarea f, :body, class: "form-control"
         = error_tag f, :body
 
       .actions
-        = submit "Submit", class: "btn"
+        = submit "Submit", class: "btn btn-default"

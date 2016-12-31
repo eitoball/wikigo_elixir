@@ -55,12 +55,8 @@ exports.config = {
       // Do not use ES6 compiler in vendor code
       ignore: [/web\/static\/vendor/]
     },
-    sass: {
-      options: {
-        includePaths: ["node_modules/materialize-css/sass"],
-      }
-    },
     copycat: {
+      "fonts": ["node_modules/Honoka/dist/fonts"]
     }
   },
 
@@ -75,6 +71,9 @@ exports.config = {
   npm: {
     enabled: true,
     styles: {
+      Honoka: [
+        "dist/css/bootstrap.css"
+      ],
       simplemde: [
         "../codemirror/lib/codemirror.css",
         "src/css/simplemde.css"

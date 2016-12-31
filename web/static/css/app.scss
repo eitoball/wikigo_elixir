@@ -1,28 +1,8 @@
-@import "components/color";
-$primary-color: color("cyan", "accent-4") !default;
-$secondary-color: color("cyan", "") !default;
-
-@import "materialize";
+@import "Honoka";
 @import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 
-nav {
-  border-bottom: 1px solid #eee;
-  margin-bottom: 30px;
-}
-
-.nav-wrapper {
-  margin-left: 20px;
-  margin-right: 20px;
-}
-
-.navbar-fixed {
-  z-index: 5;
-}
-
-main {
-  min-height: 500px;
-}
-
-tabs {
-  margin-bottom: 30px;
+@media (min-width: 1200px) {
+  .container {
+    width: 970px;
+  }
 }

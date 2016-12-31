@@ -21,7 +21,6 @@ import "phoenix_html"
 // import socket from "./socket"
 import $ from "jquery"
 import marked from "marked"
-import "materialize-css"
 import SimpleMDE from "simplemde"
 
 class MainView {
