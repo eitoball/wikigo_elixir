@@ -9,6 +9,11 @@
     .col-md-3.col-xs12
       .hidden-xs.hidden-sm
         = @word.body |> Earmark.to_html(%Earmark.Options{renderer: WikigoElixir.Earmark.HtmlTocRenderer}) |> raw
+      h2 Recents
+      ul
+        = Enum.map WikigoElixir.Word.recents, fn (w) ->
+          li = link w.title, to: word_path(@conn, :show, w)
+        = link "more...", to: words_index_path(@conn, :index), class: "pull-right"
 
 = if has_version?(@word) do
   ul.right.pagination.versions-nav

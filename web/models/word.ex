@@ -23,6 +23,10 @@ defmodule WikigoElixir.Word do
   def titles do
     WikigoElixir.Repo.all(from w in WikigoElixir.Word, select: w.title)
   end
+
+  def recents do
+    WikigoElixir.Repo.all(from w in WikigoElixir.Word, limit: 5, order_by: [desc: w.inserted_at])
+  end
 end
 
 defimpl Phoenix.Param, for: WikigoElixir.Word do
