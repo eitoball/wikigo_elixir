@@ -42,6 +42,16 @@ class WordEditView extends MainView {
 
     $(document).ready(() => {
       var simplemde = new SimpleMDE({spellChecker: false});
+
+      $("#edit, input, textarea").on("keyup change", () => {
+        $(window).bind("beforeunload", () => {
+          return "本当に移動しますか？";
+        })
+      });
+
+      $("input[type=submit]").on("click", (e) => {
+        $(window).off("beforeunload");
+      })
     });
   }
 
