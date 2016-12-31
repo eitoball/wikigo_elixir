@@ -29,8 +29,7 @@ html lang="en"
 
     footer.page-footer
       .container
-        .row
-          h5.white-text Menu
+        h5 Menu
           ul
             li = link "All words", to: words_index_path(@conn, :index), class: "grey-text text-lighten-3"
             = if Coherence.logged_in?(@conn) do
