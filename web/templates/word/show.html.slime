@@ -3,7 +3,11 @@
 
 .markdown
   h1 = @word.title
-  = add_word_link(@conn, @word.body) |> Earmark.to_html(%Earmark.Options{breaks: true}) |> raw
+  .row
+    .col.s9
+      = add_word_link(@conn, @word.body) |> Earmark.to_html(%Earmark.Options{breaks: true, renderer: WikigoElixir.Earmark.HtmlRenderer}) |> raw
+    .col.s3
+      = @word.body |> Earmark.to_html(%Earmark.Options{renderer: WikigoElixir.Earmark.HtmlTocRenderer}) |> raw
 
 = if has_version?(@word) do
   ul.right.pagination.versions-nav
