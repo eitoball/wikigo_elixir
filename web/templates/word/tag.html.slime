@@ -1,0 +1,14 @@
+h1 = @tag.name
+
+table.table
+  thead
+    tr
+      th Title
+      th colspan="2"
+
+  tbody
+    = Enum.map @tag.words, fn (word) ->
+      tr
+        td = link word.title, to: word_path(@conn, :show, word)
+        td = link "Edit", to: word_path(@conn, :edit, word)
+        td = link "Destroy", to: word_path(@conn, :delete, word), method: :delete, data: [confirm: "Are you sure?"]

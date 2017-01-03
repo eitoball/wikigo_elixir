@@ -38,6 +38,8 @@ defmodule WikigoElixir.Router do
   scope "/", WikigoElixir do
     pipe_through :browser # Use the default browser stack
 
+    get "/tags", WordController, :tags, as: "tags_index"
+    get "/tag/:tag", WordController, :tag, as: "word_tag"
     resources "/", WordController, param: "title", except: [:index]
     get "/:title/version/:version", WordController, :version
   end

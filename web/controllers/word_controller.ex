@@ -31,11 +31,13 @@ defmodule WikigoElixir.WordController do
 
   def show(conn, %{"title" => title}) do
     word = Repo.get_by!(Word, title: title)
+    word = %Word{ word | tags: word |> WikigoElixir.Tag.list |> Enum.sort |> Enum.join(",") }
     render(conn, "show.html", word: word)
   end
 
   def edit(conn, %{"title" => title}) do
     word = Repo.get_by!(Word, title: title)
+    word = %Word{ word | tags: word |> WikigoElixir.Tag.list |> Enum.sort |> Enum.join(",") }
     changeset = Word.changeset(word)
     render(conn, "edit.html", word: word, changeset: changeset)
   end
@@ -46,6 +48,8 @@ defmodule WikigoElixir.WordController do
 
     case Repo.update(changeset) do
       {:ok, word} ->
+        tags = Map.get(word_params, "tags", "")
+        WikigoElixir.Tag.update(word, tags)
         conn
         |> put_flash(:info, "Word updated successfully.")
         |> redirect(to: word_path(conn, :show, word))
@@ -79,6 +83,19 @@ defmodule WikigoElixir.WordController do
             render(conn, "show.html", word: version)
         end
     end
+  end
+
+  def tags(conn, _params) do
+    tags = WikigoElixir.Tag.counts(Word)
+    render(conn, "tags.html", tags: tags)
+  end
+
+  def tag(conn, %{"tag" => tag}) do
+    tag = %{
+      name: tag,
+      words: WikigoElixir.Tag.tagged_with(tag)
+    }
+    render(conn, :tag, tag: tag)
   end
 
   defp whodoneit(conn) do

@@ -5,6 +5,7 @@ defmodule WikigoElixir.Word do
   schema "words" do
     field :title, :string
     field :body, :string
+    field :tags, :string, virtual: true
 
     timestamps()
   end

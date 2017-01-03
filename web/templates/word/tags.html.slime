@@ -1,0 +1,5 @@
+h1 Tag list
+
+ul
+  = tag_cloud @tags, ["css1", "css2", "css3", "css4"], fn {name, css_class} ->
+    li = link name, to: word_tag_path(@conn, :tag, name)

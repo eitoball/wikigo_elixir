@@ -6,14 +6,29 @@
   .row
     .col-md-9.col-xs12
       = add_word_link(@conn, @word.body) |> Earmark.to_html(%Earmark.Options{breaks: true, renderer: WikigoElixir.Earmark.HtmlRenderer}) |> raw
+
+      div.pull-right
+        = Enum.map @word.tags |> String.split(","), fn (tag) ->
+          span.label.label-primary = tag
+          span &nbsp;
+
     .col-md-3.col-xs12
       .hidden-xs.hidden-sm
         = @word.body |> Earmark.to_html(%Earmark.Options{renderer: WikigoElixir.Earmark.HtmlTocRenderer}) |> raw
-      h2 Recents
-      ul
-        = Enum.map WikigoElixir.Word.recents, fn (w) ->
-          li = link w.title, to: word_path(@conn, :show, w)
-        = link "more...", to: words_index_path(@conn, :index), class: "pull-right"
+
+      section.clearfix
+        h2 Recents
+        ul
+          = Enum.map WikigoElixir.Word.recents, fn (w) ->
+            li = link w.title, to: word_path(@conn, :show, w)
+          = link "more...", to: words_index_path(@conn, :index), class: "pull-right"
+
+      section.clearfix
+        h2 Tag list
+        ul
+          = Enum.map WikigoElixir.Tag.least_used(WikigoElixir.Word), fn (tag) ->
+            li = link tag.name, to: word_tag_path(@conn, :tag, tag.name)
+        = link "more tags", to: tags_index_path(@conn, :tags), class: "pull-right"
 
 = if has_version?(@word) do
   ul.right.pagination.versions-nav

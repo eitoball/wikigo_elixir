@@ -10,6 +10,10 @@
         = text_input f, :title, class: "form-control"
         = error_tag f, :title
 
+      .form-group.field
+        = label f, :tags
+        = text_input f, :tags, class: "form-control"
+
   .row
     #edit.col.s12.m12
       .form-group.field
